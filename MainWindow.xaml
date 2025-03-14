@@ -1,0 +1,73 @@
+﻿<Window x:Class="Boardgame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Boardgame"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="610" MinWidth="1000" MaxHeight="838" MaxWidth="1920">
+    <Grid MinHeight="610" MinWidth="1000">
+        <Canvas Name="BoardCanvas" Margin="220,38,210,50" Width="570">
+            <Button Name="Space0" Content="0" Width="55" Height="50" Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space1" Content="1" Width="56" Height="50" Canvas.Left="65" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space2" Content="2" Width="55" Height="50" Canvas.Left="120" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space3" Content="3" Width="56" Height="50" Canvas.Left="175" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space4" Content="4" Width="55" Height="50" Canvas.Left="231" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space5" Content="5" Width="56" Height="50" Canvas.Left="286" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space6" Content="6" Width="55" Height="50" Canvas.Left="342" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space7" Content="7" Width="56" Height="50" Canvas.Left="397" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space8" Content="8" Width="55" Height="50" Canvas.Left="453" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space9" Content="9" Width="55" Height="50" Canvas.Left="508" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space10" Content="10" Width="55" Height="50" Canvas.Left="508" Canvas.Top="60" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space11" Content="11" Width="55" Height="50" Canvas.Left="508" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space12" Content="12" Width="55" Height="50" Canvas.Left="508" Canvas.Top="160" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space13" Content="13" Width="55" Height="50" Canvas.Left="508" Canvas.Top="210" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space14" Content="14" Width="55" Height="50" Canvas.Left="508" Canvas.Top="260" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space15" Content="15" Width="55" Height="50" Canvas.Left="508" Canvas.Top="310" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space16" Content="16" Width="55" Height="50" Canvas.Left="508" Canvas.Top="360" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space17" Content="17" Width="55" Height="50" Canvas.Left="508" Canvas.Top="410" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space18" Content="18" Width="55" Height="50" Canvas.Left="508" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space19" Content="19" Width="55" Height="50" Canvas.Left="453" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space20" Content="20" Width="56" Height="50" Canvas.Left="398" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space21" Content="21" Width="55" Height="50" Canvas.Left="343" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space22" Content="22" Width="56" Height="50" Canvas.Left="287" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space23" Content="23" Width="55" Height="50" Canvas.Left="232" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space24" Content="24" Width="56" Height="50" Canvas.Left="176" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space25" Content="25" Width="55" Height="50" Canvas.Left="121" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Button Name="Space26" Content="26" Width="56" Height="50" Canvas.Left="65" Canvas.Top="460" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Name="Space27" Content="27" Width="55" Height="50" Canvas.Left="10" Canvas.Top="460" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space28" Content="28" Width="55" Height="50" Canvas.Left="10" Canvas.Top="410" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space29" Content="29" Width="55" Height="50" Canvas.Left="10" Canvas.Top="360" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space30" Content="30" Width="55" Height="50" Canvas.Left="10" Canvas.Top="310" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space31" Content="31" Width="55" Height="50" Canvas.Left="10" Canvas.Top="260" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space32" Content="32" Width="55" Height="50" Canvas.Left="10" Canvas.Top="210" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space33" Content="33" Width="55" Height="50" Canvas.Left="10" Canvas.Top="160" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space34" Content="34" Width="55" Height="50" Canvas.Left="10" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Name="Space35" Content="35" Width="55" Height="50" Canvas.Left="10" Canvas.Top="60" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        </Canvas>
+
+        <StackPanel HorizontalAlignment="Left" Margin="10,0,0,10" Height="104" VerticalAlignment="Bottom">
+            <Label Name="Player1Score" Content="Player 1: 0" />
+            <Label Name="Player2Score" Content="Player 2: 0" />
+            <Label Name="Player3Score" Content="Player 3: 0" />
+            <Label Name="Player4Score" Content="Player 4: 0" />
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+            <Label Name="CurrentPlayerLabel" Content="Player 1's Turn" FontSize="16" FontWeight="Bold" Foreground="Blue"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Roll Dice" x:Name="RollButton" Width="100" Height="40" Click="RollButton_Click" FontSize="15"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right" Margin="0,0,10,10" Width="200" VerticalAlignment="Bottom">
+            <Label x:Name="player1CurrentPosition" Content="Player 1 Current Position: 0" FontSize="15" Height="40" VerticalContentAlignment="Center"/>
+            <Label x:Name="player2CurrentPosition" Content="Player 2 Current Position: 0" Height="40" FontSize="15"/>
+            <Label x:Name="player3CurrentPosition" Content="Player 3 Current Position: 0" Height="40" FontSize="15"/>
+            <Label x:Name="player4CurrentPosition" Content="Player 4 Current Position: 0" Height="40" FontSize="15"/>
+            <Label x:Name="diceNumberDisplay" Content="Dice Number: 0" Height="40" FontSize="15" />
+        </StackPanel>
+
+    </Grid>
+</Window>
