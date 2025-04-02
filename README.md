@@ -1,6 +1,6 @@
 # Boardgame
 
-A fun boardgame that plays like monopoly.
+A fun boardgame that plays like Man, Don't Get Angry.
 Point of the game is to be the first player that reaches 10 points
 Point is awarded by passing entire board without getting terminated by other players and by terminating other players.
 Point is lost if a player is terminated by another player.
