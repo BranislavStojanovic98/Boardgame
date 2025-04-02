@@ -26,10 +26,10 @@ public partial class MainWindow : Window
 
         players = new List<Player>
             {
-                new Player("Player 1", 0),
-                new Player("Player 2", 9),
-                new Player("Player 3", 18),
-                new Player("Player 4", 27)
+                new Player("Player 1", 0),      //Set start to field 0
+                new Player("Player 2", 9),      //Set start to field 9
+                new Player("Player 3", 18),     //Set start to field 18
+                new Player("Player 4", 27)      //Set start to field 27
             };
 
         random = new Random();
@@ -41,122 +41,124 @@ public partial class MainWindow : Window
 
     private async void RollButton_Click(object sender, RoutedEventArgs e)
     {
-        RollButton.IsEnabled = false;
-        bool run = true;
-        while (run)
+        Player currentPlayer = players[currentPlayerIndex];
+
+        int roll = random.Next(1, 7);
+        diceNumberDisplay.Content = $"Dice Number: {roll}";
+        SetDiceImage(roll);
+
+        int previousPosition = currentPlayer.Position;
+        currentPlayer.MoveToPosition(currentPlayer.Position + roll);
+
+        //Player passed entire board
+        if (currentPlayer.Position >= 36)
         {
-            Player currentPlayer = players[currentPlayerIndex];
-
-            int roll = random.Next(1, 7);
-            diceNumberDisplay.Content = $"Dice Number: {roll}";
-            int previousPosition = currentPlayer.Position;
-            currentPlayer.MoveToPosition(currentPlayer.Position + roll);
-
-            //Player passed entire board
-            if (currentPlayer.Position >= 36)
-            {
-                currentPlayer.Position %= 36;
-            }
-            //If a Player1 passes a loop (board size is 36)
-            if (currentPlayer == players[0])
-            {
-                //Check if Player1 has passed Position 0
-                if (previousPosition < 0 && currentPlayer.Position >= 0)
-                {
-                    currentPlayer.Score += 1; //Player1 gets +1 point for passing Position 0
-                }
-            }
-            //If a Player2 passes a loop
-            if (currentPlayer == players[1])
-            {
-                //Check if Player 2 has passed Position 9
-                if (previousPosition < 9 && currentPlayer.Position >= 9)
-                {
-                    currentPlayer.Score += 1; // Player2 gets +1 point for passing Position 9
-                }
-            }
-            //If a Player3 passes a loop
-            if (currentPlayer == players[2])
-            {
-                //Check if Player3 has passed Position 18
-                if (previousPosition < 18 && currentPlayer.Position >= 18)
-                {
-                    currentPlayer.Score += 1; // Player3 gets +1 point for passing Position 18
-                }
-            }
-            //If a Player4 passes a loop
-            if (currentPlayer == players[3])
-            {
-                //Check if Player4 has passed Position 27
-                if (previousPosition < 27 && currentPlayer.Position >= 27)
-                {
-                    currentPlayer.Score += 1; // Player4 gets +1 point for passing Position 27
-                }
-            }
-
-            //Check if the current player landed on another players start position
-            for (int i = 0; i < players.Count; i++)
-            {
-                //Check the current players start position
-                if (i != currentPlayerIndex && currentPlayer.Position == players[i].StartingPosition)
-                {
-                    //If the current player is landing on another players start position
-                    if (currentPlayer.Position != currentPlayer.StartingPosition)
-                    {
-                        //Check if the player owning the start position is already there
-                        if (players[i].Position == players[i].StartingPosition)
-                        {
-                            //Current player is sent back to their start and decrease score
-                            currentPlayer.Position = currentPlayer.StartingPosition;
-                            currentPlayer.Score -= 1;
-
-                            //The player who owns that start position gets a point
-                            players[i].Score += 1;
-                        }
-                    }
-                }
-            }
-
-            //Check if the player passes another player and reset their position if needed
-            for (int i = 0; i < players.Count; i++)
-            {
-                if (i != currentPlayerIndex && players[i].Position == currentPlayer.Position)
-                {
-                    Player passedPlayer = players[i];
-
-                    //If the passed player is not at their starting position
-                    if (passedPlayer.Position != passedPlayer.StartingPosition)
-                    {
-                        //Passed player is sent back to their starting position
-                        passedPlayer.Position = passedPlayer.StartingPosition;
-                        passedPlayer.Score -= 1;
-
-                        //Current player gains 1 point for passing other player
-                        currentPlayer.Score += 1;
-                    }
-                }
-            }
-
-            UpdateBoard();
-            UpdateScores();
-            UpdateCurrentPlayer();
-            UpdateCurrentPositions();
-
-            if (currentPlayer.Score >= 10)
-            {
-
-                MessageBox.Show($"{currentPlayer.Name} has won the game with {currentPlayer.Score} points!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                run = false;
-                RollButton.IsEnabled = false;
-            }
-
-            //Wait half a second untill another player turn (FOR TESTING PURPOSES AND AUTOMATIC PLAYING)
-            await Task.Delay(500);
-
-            // Move to the next player
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+            currentPlayer.Position %= 36;
         }
+        //If a Player1 passes a loop (board size is 36)
+        if (currentPlayer == players[0])
+        {
+            //Check if Player1 has passed Position 0
+            if (previousPosition >= 30 && currentPlayer.Position <= 5)
+            {
+                currentPlayer.Score += 1; //Player1 gets +1 point for passing Position 0
+            }
+        }
+        //If a Player2 passes a loop
+        if (currentPlayer == players[1])
+        {
+            //Check if Player 2 has passed Position 9
+            if (previousPosition < 9 && currentPlayer.Position >= 9)
+            {
+                currentPlayer.Score += 1; // Player2 gets +1 point for passing Position 9
+            }
+        }
+        //If a Player3 passes a loop
+        if (currentPlayer == players[2])
+        {
+            //Check if Player3 has passed Position 18
+            if (previousPosition < 18 && currentPlayer.Position >= 18)
+            {
+                currentPlayer.Score += 1; // Player3 gets +1 point for passing Position 18
+            }
+        }
+        //If a Player4 passes a loop
+        if (currentPlayer == players[3])
+        {
+            //Check if Player4 has passed Position 27
+            if (previousPosition < 27 && currentPlayer.Position >= 27)
+            {
+                currentPlayer.Score += 1; // Player4 gets +1 point for passing Position 27
+            }
+        }
+
+        //Check if the current player landed on another players start position
+        for (int i = 0; i < players.Count; i++)
+        {
+            //Check the current players start position
+            if (i != currentPlayerIndex && currentPlayer.Position == players[i].StartingPosition)
+            {
+                //If the current player is landing on another players start position
+                if (currentPlayer.Position != currentPlayer.StartingPosition)
+                {
+                    //Check if the player owning the start position is already there
+                    if (players[i].Position == players[i].StartingPosition)
+                    {
+                        //Current player is sent back to their start and decrease score
+                        currentPlayer.Position = currentPlayer.StartingPosition;
+                        currentPlayer.Score -= 1;
+
+                        //The player who owns that start position gets a point
+                        players[i].Score += 1;
+                    }
+                }
+            }
+        }
+        
+        //Check if the player lands on position with another player and reset other players position if needed
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (i != currentPlayerIndex && players[i].Position == currentPlayer.Position)
+            {
+                Player otherPlayer = players[i];
+
+                // If the other player is not at their starting position
+                if (otherPlayer.Position != otherPlayer.StartingPosition)
+                {
+                    // The player who was already on the position (other player) is sent back to their starting position
+                    otherPlayer.Position = otherPlayer.StartingPosition;
+                    otherPlayer.Score -= 1;
+
+                    // Current player gains 1 point for landing on the other player's position
+                    currentPlayer.Score += 1;
+                }
+            }
+        }
+        
+        UpdateBoard();
+        UpdateScores();
+        UpdateCurrentPlayer();
+        UpdateCurrentPositions();
+
+        if (currentPlayer.Score >= 10)
+        {
+
+            MessageBox.Show($"{currentPlayer.Name} has won the game with {currentPlayer.Score} points!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            RollButton.IsEnabled = false;
+        }
+
+        // If rolled a 6, the player gets another turn
+        if (roll == 6)
+        {
+            return;
+        }
+
+        //Wait half a second untill another player turn (FOR TESTING PURPOSES AND AUTOMATIC PLAYING)
+        //await Task.Delay(500);
+
+        // Move to the next player
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
     }
 
 
@@ -254,7 +256,7 @@ public partial class MainWindow : Window
                 }
             }
 
-            
+
         }
     }
 
@@ -268,27 +270,51 @@ public partial class MainWindow : Window
 
     private void UpdateCurrentPositions()
     {
-        player1CurrentPosition.Content = $"Player 1: {players[0].Position}";
-        player2CurrentPosition.Content = $"Player 2: {players[1].Position}";
-        player3CurrentPosition.Content = $"Player 3: {players[2].Position}";
-        player4CurrentPosition.Content = $"Player 4: {players[3].Position}";
+        player1CurrentPosition.Content = $"Player 1 Current Position: {players[0].Position}";
+        player2CurrentPosition.Content = $"Player 2 Current Position: {players[1].Position}";
+        player3CurrentPosition.Content = $"Player 3 Current Position: {players[2].Position}";
+        player4CurrentPosition.Content = $"Player 4 Current Position: {players[3].Position}";
     }
 
     private void UpdateCurrentPlayer()
     {
         CurrentPlayerLabel.Content = $"{players[currentPlayerIndex].Name}'s Turn";
 
-        for (int i = 0; i < players.Count; i++)
+        if(currentPlayerIndex == 0)
         {
-            var playerLabel = (Label)this.FindName($"Player{i + 1}Score");
-            if (i == currentPlayerIndex)
-            {
-                playerLabel.Foreground = Brushes.Blue;
-            }
-            else
-            {
-                playerLabel.Foreground = Brushes.Black;
-            }
+            CurrentPlayerLabel.Foreground = Brushes.Red;
         }
+        else if(currentPlayerIndex == 1)
+        {
+            CurrentPlayerLabel.Foreground = Brushes.Blue;
+        }
+        else if(currentPlayerIndex == 2)
+        {
+            CurrentPlayerLabel.Foreground = Brushes.Yellow;
+        }
+        else if(currentPlayerIndex == 3)
+        {
+            CurrentPlayerLabel.Foreground = Brushes.Purple;
+        }
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                var playerLabel = (Label)this.FindName($"Player{i + 1}Score");
+                if (i == currentPlayerIndex)
+                {
+                    playerLabel.Foreground = Brushes.Blue;
+                }
+                else
+                {
+                    playerLabel.Foreground = Brushes.Black;
+                }
+            }
+    }
+
+    private void SetDiceImage(int roll)
+    {
+        string imagePath = $"images/diceRoll{roll}.png";
+
+        diceImage.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
     }
 }

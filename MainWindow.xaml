@@ -44,6 +44,7 @@
             <Button Name="Space33" Content="33" Width="55" Height="50" Canvas.Left="10" Canvas.Top="160" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Button Name="Space34" Content="34" Width="55" Height="50" Canvas.Left="10" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Button Name="Space35" Content="35" Width="55" Height="50" Canvas.Left="10" Canvas.Top="60" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Image x:Name="diceImage" Height="194" Width="237" HorizontalAlignment="Left" Canvas.Left="175" Canvas.Top="138" VerticalAlignment="Top"/>
         </Canvas>
 
         <StackPanel HorizontalAlignment="Left" Margin="10,0,0,10" Height="104" VerticalAlignment="Bottom">
@@ -54,7 +55,7 @@
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
-            <Label Name="CurrentPlayerLabel" Content="Player 1's Turn" FontSize="16" FontWeight="Bold" Foreground="Blue"/>
+            <Label Name="CurrentPlayerLabel" Content="Player 1's Turn" FontSize="16" FontWeight="Bold" Foreground="Blue" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}"/>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,10">

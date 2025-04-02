@@ -8,4 +8,34 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="images\diceRoll1.png" />
+    <None Remove="images\diceRoll2.png" />
+    <None Remove="images\diceRoll3.png" />
+    <None Remove="images\diceRoll4.png" />
+    <None Remove="images\diceRoll5.png" />
+    <None Remove="images\diceRoll6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="images\diceRoll1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\diceRoll2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\diceRoll3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\diceRoll4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\diceRoll5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\diceRoll6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
